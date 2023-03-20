@@ -1,7 +1,24 @@
-<p>{{ groupName }}</p>
+<p>Evento conectado ao {{ groupName }}</p>
+<span *ngIf="connectionStatus" class="tag is-success">Conectado</span>
+<span *ngIf="!connectionStatus" class="tag is-danger">Desconectado</span>
 <div *ngFor="let event of events">
-  <div>
-    {{ event.details }}
-    {{ event.dispatchedAt }}
+  <div class="box mt-2 animate__animated animate__fadeIn">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="{{ event.link }}" alt="Image" />
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ event.title }}</strong>
+            <small>{{ event.dispatchedAt | date : "dd/MM/YYYY" }}</small>
+            <br />
+            {{ event.message }}
+          </p>
+        </div>
+      </div>
+    </article>
   </div>
 </div>
